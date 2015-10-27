@@ -32,7 +32,7 @@ namespace Caching.Services
         public void Add(string key, object value, TimeSpan? absoluteExpiration)
         {
             if (absoluteExpiration != null)
-                ObjectCache.Add(key, value, Now.AddSeconds(absoluteExpiration.Value.Seconds));
+                ObjectCache.Add(key, value, Now.Add(absoluteExpiration.Value));
             else
                 ObjectCache.Add(key, value, null);
         }
