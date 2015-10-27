@@ -31,7 +31,7 @@ namespace Caching.Services
             if (HttpContext.Current == null) return;
             HttpContext.Current.Cache.Add(key, value, null,
                 absoluteExpiration != null
-                    ? DateTime.Now.AddSeconds(absoluteExpiration.Value.Seconds)
+                    ? DateTime.Now.Add(absoluteExpiration.Value)
                     : DateTime.Now.AddDays(365),
                 Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
         }
